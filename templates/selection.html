@@ -1,0 +1,66 @@
+<!doctype html>
+<html >
+	<div class="page-header"></div>
+	
+
+<div>
+<h1>Sell your old equipment</h1>
+<p>Select your equipment from our approved list of manufacturers, and lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</p></div>
+<div><h4>What have you got to sell:</h4>
+</div>
+
+
+ <div class="selectBox col-lg-7 col-md-7 col-sm-12 col-xs-12">
+  <div> <select class="formItem col-lg-10 col-md-10 col-sm-10 col-xs-10" ng-options="item for item in types | orderBy:'toString()'" ng-model="typeSelected.value" ng-change="updateType(typeSelected.value)" id="typeSelect" ><option value="">Select Type</option>
+</select></div>
+ 
+  <div> <select class="formItem col-lg-10 col-md-10 col-sm-10 col-xs-10" ng-options="item for item in makes | orderBy:'toString()'" ng-model="makeSelected.value" ng-change="updateMake(makeSelected.value)" ng-show="makes.length>0"><option value="">Select Make</option>
+</select></div>
+
+<div> <select class="formItem col-lg-10 col-md-10 col-sm-10 col-xs-10" ng-options="item for item in models | orderBy:'toString()'" ng-model="modelSelected.value" ng-change="updateModel(modelSelected.value)" ng-show="models.length>0"><option value="">Select Model</option>
+</select></div>
+
+ <div>
+<button class="formItem col-lg-4 col-md-4 col-sm-6 col-xs-6" ng-click="addItemTouserList()"  ng-show="AddItemShouldShow">Add Item</button>
+</div>
+	</div>
+ 
+ <div class="selectBox col-lg-7 col-md-7 col-sm-12 col-xs-12">
+<div><h4>What do you want in return: </h4></div>
+ <div> <select class="formItem col-lg-10 col-md-10 col-sm-10 col-xs-10"  id="userWantSelect" 
+   ng-model="userWantSelected.value" ng-change="updateUserWant(userWantSelected.value)">
+   <option selected value="Credit">Credit</option>
+   <option  value="Instrumentation">Instrumentation</option>
+   <option  value="Services">Services</option>
+</select>
+   </div>
+
+<div>
+<button class="formItem col-lg-4 col-md-4 col-sm-6 col-xs-6" ng-click="addItemTouserWantList(userWantSelected.value)"  >Add Item</button>
+</div>
+	</div>
+
+
+<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+<div class="cartContainer">
+	<div class="headerCart col-lg-12 col-md-12 col-sm-12 col-xs-12">My List</div>
+	<div class="boxCart col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<ul>
+	
+		<li ng-repeat="item in userList"><strong>{{item.make}}</strong> {{item.model}}</li>
+		</ul></div>	
+		
+</div>
+
+<div class="cartContainer">
+	<h5>In exchange for:</h5>
+	<div class="boxCart col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<ul>
+	<li ng-repeat="item in userWantList"><strong>{{item}}</strong></li>
+		</ul></div>	
+		<div><a href="#/userInfo"><button class="checkoutButton col-lg-12 col-md-12 col-sm-12 col-xs-12"  ng-show="AddItemShouldShow" >Checkout</button></a></div>
+</div>
+</div>
+	
+	
+</html>

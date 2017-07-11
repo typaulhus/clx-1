@@ -1,0 +1,4 @@
+<h1> {{post.title.rendered}}</h1>
+<img ng-src="{{post.acf.image}}">
+<h3 ng-bind-html="post.my_awesome_field | to_trusted"></h3>
+<di ng-bind-html="post.content.rendered | to_trusted"></div>
