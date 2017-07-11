@@ -1,5 +1,5 @@
 /*
-Theme Name: Overbrook Theme
+Theme Name: Overbrook Theme Newest
 Theme URI: http://www.roysivan.com/angular-wordpress-theme
 Description: Bringing AngularJS technology to WordPress. Theme front end is built using Twitter Bootstrap with some minor styling done by Roy Sivan. This theme is built to help build a Single Page Application using WordPress and AngularJS.
 Version: 5.0
@@ -32,6 +32,8 @@ header, article, footer, section, nav{
 .clear{
 	clear:both;	
 }
+.fl{float:left;}
+.fr{float:right;}
 
 
 /******** ALL FURTHER STYLING SHOULD BE DONE IN THE more-style.less/css FILES *******/

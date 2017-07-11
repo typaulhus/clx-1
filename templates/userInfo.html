@@ -7,17 +7,31 @@
 
 <body>
 
-<h1>Contact </h1>
+<h1>Contact {{userWantList}}</h1>
 <p>We want your old equipment. One of our sales representatives will contact you about these items lorem ipsum dolor sit amet.</p>
 
 <div class="selectBox col-lg-7 col-md-7 col-sm-12 col-xs-12">	
-<ng-form name="EquipmentSales">
-    <label for="Name" class="col-lg-10 col-md-10 col-sm-12 col-xs-12">Name</label>
-	<input ng-model="Name" name="Name" ng-required="yes"class="col-lg-10 col-md-10 col-sm-12 col-xs-12"> </input>
-    <label for="Company" class="col-lg-10 col-md-10 col-sm-12 col-xs-12">Company</label>
-	<input ng-model="Company"  name="Company" ng-required="no" class="col-lg-10 col-md-10 col-sm-12 col-xs-12"></input>
-
-</ng-form>
+<form  name="form" role="form" ng-submit="form.$valid && sendMessage(input)">
+	<fieldset>
+    	<div>
+			<label for="name">Name:</label><br> <input id="name" type="text" name="name" ng-model="input.name"/>
+		</div>
+		<div>
+			<label for="company">Company:</label><br> <input id="company" type="text" name="company" ng-model="input.company"/>
+		</div>
+		<div>
+			<label for="phone">Phone:</label> <br><input id="phone" type="text" name="phone" ng-model="input.phone" />
+		</div>
+		<div>
+			<label for="email">Email:</label>  <br><input id="email" type="text" name="email" ng-model="input.email"/>
+			</div>
+		<div>
+			<label for="message">Message:</label><br> <textarea name="message" ng-model="input.message"></textarea> 
+			</div>
+		<div>
+			<button type="submit" name="submit" value="submit">Submit</button>
+		</div>
+	</form></div>
 
 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 <div class="cartContainer">
@@ -25,7 +39,7 @@
 	<div class="boxCart col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<ul>
 	
-		<li ng-repeat="item in userList"><strong>{{item.make}}</strong> {{item.model}}</li>
+		<li ng-repeat="item in UserList"><strong>{{item.make}}</strong> {{item.model}}</li>
 		</ul></div>	
 		
 </div>
@@ -34,7 +48,7 @@
 	<h5>In exchange for:</h5>
 	<div class="boxCart col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	<ul>
-	<li ng-repeat="item in userWantList"><strong>{{item}}</strong></li>
+	<li ng-repeat="item in UserWantList"><strong>{{item}}</strong></li>
 		</ul></div>	
 		<div><a href="#/userInfo"><button class="checkoutButton col-lg-12 col-md-12 col-sm-12 col-xs-12"  ng-show="AddItemShouldShow" >Checkout</button></a></div>
 </div>
