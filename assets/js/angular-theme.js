@@ -4,7 +4,7 @@ var wpApp = new angular.module( 'wpAngularTheme', ['ui.router', 'ngResource'] );
 
 
 
-wpApp.controller('InfoCtrl', ['$scope','$state', '$http', '$stateParams', function( $scope, $http, $stateParams, $state) {
+wpApp.controller('InfoCtrl', ['$scope', '$http', '$state',  '$stateParams', function( $scope, $http, $stateParams, $state) {
  //getting fooVal
     // var inReturn = $stateParams.inReturn; //getting barVal
     // //..
@@ -16,24 +16,37 @@ wpApp.controller('InfoCtrl', ['$scope','$state', '$http', '$stateParams', functi
 
     $scope.sendMessage = function( input ) {
       input.submit = true;
-      var processUrl=appInfo.template_directory + 'templates/process.php';
+      var processUrl='http://localhost:8888/#!/submit';
+
       console.log(processUrl);
       // $http.post('process.php', {formData:angular.element.param(input)}).then(function(){console.log('HOLY SHIT IT SENT')});
       $http({
           method: 'POST',
           url: processUrl,
           data: {formData:angular.element.param(input)},
-          // headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       })
-      .then( function(data) {
-        if ( data.success ) {
-          $scope.success = true;
-          console.log('Holy Shit it sent');
-        } else {
-          $scope.error = true;
-          console.log('Not this time. Try again')
-        }
-      } );
+        .then( function(data) {
+          if ( data.success ) {
+            $scope.success = true;
+            console.log('Holy Shit it sent');
+          } else {
+            $scope.error = true;
+            console.log('Not this time. Try again')
+          }
+        } );
+
+      // jQuery.ajax({
+      //               type: 'POST',
+      //               url: processUrl,
+      //               data: "formData="+input,
+      //               headers: "Content-Type=application/x-www-form-urlencoded",
+      //               success: function(data) {
+      //                 $scope.success = true;
+      //                 console.log('Holy Shit it sent');
+      //               }
+      //           });
+
     }
  
 
@@ -42,7 +55,7 @@ wpApp.controller('SelectionCtrl', ['$scope', '$http','$state',  '$stateParams', 
  var makeModelJson=appInfo.template_directory + 'assets/js/makeModel.json';
   $http.get(makeModelJson).then(function(data) {
     $scope.makeModel=data.data;
-    console.log($scope.makeModel);
+
   
     $scope.makes=[];
     $scope.models=[];
@@ -63,7 +76,7 @@ wpApp.controller('SelectionCtrl', ['$scope', '$http','$state',  '$stateParams', 
   $scope.allTypes=[];
   for(var i=0;i<$scope.makeModel.length;i++){
     $scope.allTypes.push($scope.makeModel[i].type);
- console.log($scope.allTypes);
+
   }
 
     $scope.types=unique($scope.allTypes);
@@ -225,11 +238,15 @@ wpApp.config( function( $stateProvider, $urlRouterProvider){
         url: '/',
         templateUrl: appInfo.template_directory + 'templates/selection.html'
     })
-    //   .state('submit', {
-    //     url: '/submit',
-    //     templateUrl: appInfo.template_directory + 'templates/process.php'
-    // })
+      .state('submit', {
+        url: '/submit',
+        templateUrl: appInfo.template_directory + 'templates/process.php',
+        params: {
+            formData: null
+        }
+    })
 });
+
 
 wpApp.filter ( 'to_trusted', ['$sce', function( $sce ){
   return function( text ) {
