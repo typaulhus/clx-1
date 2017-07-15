@@ -20,6 +20,8 @@ $postData = ($_GET);
         $company = $postData[company];
 
         $message = $postData[message];
+        $UserExchangeList = $postData[UserExchangeList];
+        $UserWantInReturn = $postData[UserWantInReturn];
      
 
          if ( $contactName != '' && $email != '' && $message != '' ) {
@@ -33,6 +35,8 @@ $postData = ($_GET);
             $body .= 'Email: ' . $email . "\n";
             $body .= 'Phone: ' . $phone . "\n";
             $body .= "Message:\n" . $message . "\n\n";
+             $body .= "Items I want to Exchange:\n" . $UserExchangeList . "\n\n";
+              $body .= "What I Want in Return:\n" . $UserWantInReturn . "\n\n";
 
             $success = mail( $mailTo, $subject, $body );
 

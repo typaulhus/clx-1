@@ -12,7 +12,9 @@ wpApp.controller('InfoCtrl', ['$scope', '$http', '$state',  '$stateParams', func
     // $scope.params = $stateParams; 
     
       $scope.UserList = $state.userInfoUserList; 
-       $scope.UserWantList = $state.userInfoUserWantList; 
+       $scope.UserWantList = $state.userInfoUserWantList;
+       $scope.UserListStringify= JSON.stringify($scope.UserList);
+       $scope.UserWantListStringify= JSON.stringify($scope.UserWantList);
 
     $scope.sendMessage = function( input ) {
       input.submit = true;
@@ -36,16 +38,7 @@ wpApp.controller('InfoCtrl', ['$scope', '$http', '$state',  '$stateParams', func
           }
         } );
 
-      // jQuery.ajax({
-      //               type: 'POST',
-      //               url: processUrl,
-      //               data: "formData="+input,
-      //               headers: "Content-Type=application/x-www-form-urlencoded",
-      //               success: function(data) {
-      //                 $scope.success = true;
-      //                 console.log('Holy Shit it sent');
-      //               }
-      //           });
+
 
     }
  
@@ -199,15 +192,7 @@ wpApp.controller('SelectionCtrl', ['$scope', '$http','$state',  '$stateParams', 
     };
   };
 
-  // $scope.showItem=function(itemModel){
-  //   for (var i = 0; i < $scope.userList.length+1; i++) { 
-  //     if($scope.userList[i].model==itemModel)
-  //     {
-  //       return(true);
-  //       break;
-  //     };
-  //   }
-  // };
+
 
    $scope.changeState=function(){
     $state.go('userInfo',{userInfoUserList:$scope.userList, userInfoUserWantList:$scope.userWantList});

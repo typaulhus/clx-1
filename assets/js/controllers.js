@@ -15,6 +15,7 @@ appNSControllers.controller('selectionController', ['$scope', '$http', '$routePa
 	  $scope.newItemAdded=true;
 	  $scope.AddItemShouldShow=false;
 	  $scope.UserWant;
+
 	
 	
 	
@@ -45,7 +46,9 @@ $scope.makes=unique($scope.makes);
 };
 	  
 
-
+$scope.toString=function(array){
+	return:JSON.stringify(array);
+}
 	
 function unique(someArray) {
     var o = {}, i, l = someArray.length, r = [];

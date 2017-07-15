@@ -29,6 +29,20 @@
 			<label for="message">Message:</label><br> <textarea name="message" ng-model="input.message"></textarea> 
 			</div>
 		<div>
+			<div>
+			<label for="UserExchangeList">Items I Wish to Exchange</label><br> <textarea name="UserExchangeList" ng-model="input.UserExchangeList" value="{{UserListStringify}}">
+				<ul><li ng-repeat="item in UserList"><strong>{{item.make}}</strong> {{item.model}}</li>
+				<input type="text" value="{{song.name}}" name="songName" class="form-control" ng-model="songName" required/>
+				</ul>
+			</textarea> 
+			</div>
+		<div>
+		<div>
+			<div>
+			<label for="UserWantInReturn">What I Want in Return</label><br> <textarea name="UserWantInReturn" ng-model="input.UserWantInReturn" value="{{UserWantListStringify}}">
+			</textarea> 
+			</div>
+		<div>
 			<button type="submit" name="submit" value="submit">Submit</button>
 		</div>
 	</form></div>
